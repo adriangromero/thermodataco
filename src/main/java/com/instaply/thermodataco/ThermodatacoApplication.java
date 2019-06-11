@@ -5,16 +5,10 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import com.instaply.thermodataco.model.Scale;
 import com.instaply.thermodataco.model.Temperature;
@@ -23,7 +17,6 @@ import com.instaply.thermodataco.repository.ZoneRepository;
 
 @SpringBootApplication
 public class ThermodatacoApplication {
-	private static final Logger logger = LoggerFactory.getLogger(ThermodatacoApplication.class);
 
 	/**
 	 * Starts the Spring App
@@ -39,7 +32,6 @@ public class ThermodatacoApplication {
 	 * @return
 	 */
     @Bean
-    
     CommandLineRunner initDatabase(ZoneRepository zoneRepository) {
         return args -> {
         	

@@ -1,28 +1,25 @@
 package com.instaply.thermodataco.request;
 
-import org.springframework.security.core.Authentication;
-
 import com.instaply.thermodataco.model.Temperature;
 
 public class TemperatureRequest {
 	
-	private Authentication authentication;
+	private String user;
 	private String zone;
 	private Temperature temperature;
 	
 	/**
-	 * @return the authentication
+	 * @return the user
 	 */
-	public Authentication getAuthentication() {
-		return authentication;
+	public String getUser() {
+		return user;
 	}
 	/**
-	 * @param authentication the authentication to set
+	 * @param user the user to set
 	 */
-	public void setAuthentication(Authentication authentication) {
-		this.authentication = authentication;
+	public void setUser(String user) {
+		this.user = user;
 	}
-	
 	/**
 	 * @return the zone
 	 */
@@ -47,5 +44,7 @@ public class TemperatureRequest {
 	public void setTemperature(Temperature temperature) {
 		this.temperature = temperature;
 	}
+	
+
 	
 }

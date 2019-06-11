@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.instaply.thermodataco.error.ZoneNotFoundException;
 import com.instaply.thermodataco.error.ZoneOrCustomerNotFoundException;
 import com.instaply.thermodataco.model.Temperature;
@@ -31,7 +30,6 @@ public class TemperatureController {
 	TemperatureService temperatureService;
 	
 	@ResponseStatus(HttpStatus.OK)
-	@JsonFormat
 	@GetMapping("/status")
 	public String checkStatus () {
 		logger.debug("checkStatus ini");
@@ -61,7 +59,7 @@ public class TemperatureController {
 	@PostMapping(path = "/temperatures", consumes = "application/json", produces = "application/json")
 	public Temperature createTemperature (@RequestBody TemperatureRequest request, Authentication auth) {
 		logger.debug("createTemperature ini");
-		request.setAuthentication(auth);
+		request.setUser(auth.getName());
 		Temperature response = temperatureService.createTemperature(request);
 		if(response == null) {
 			logger.error("getHistorical Error: ZoneOrCustomerNotFoundException");

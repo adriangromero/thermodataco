@@ -25,7 +25,7 @@ public class TemperatureServiceImpl implements TemperatureService{
 		temperature.setDateTime(LocalDateTime.now()); // Setting current time
 		
 		// Get the proper zone to add the temperature
-		Zone zone = zoneRepository.findZoneByCustomerAndName(request.getAuthentication().getName(), request.getZone());
+		Zone zone = zoneRepository.findZoneByCustomerAndName(request.getUser(), request.getZone());
 		if (zone == null) {
 			return null;
 		}
